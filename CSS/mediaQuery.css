@@ -1,0 +1,13 @@
+@media only screen and (max-width: 600px) {
+    *{
+        font-size: 13px;
+    }
+    .view h1{
+        font-size: 30px;
+        
+    }
+    .bookmark-form h2{
+        font-size: 16px;
+    }
+   
+  }
