@@ -10,7 +10,7 @@ var bookMarkList = []
 
 
 // * ----------------Functions-------------------------
-bookMarkList = JSON.parse(localStorage.getItem("bookmarkData")) 
+bookMarkList = JSON.parse(localStorage.getItem("bookmarkData")) || []
 drawBookMarkTable (bookMarkList)
 // & Add bookmark Function
 function addBookMark () {
