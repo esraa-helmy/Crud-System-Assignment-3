@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icons/bookmark.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/all.min.css">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Bookmark</title>
+</head>
+<body>
+    <div class="view min-vh-100 py-5 ">
+        <div class="container ">
+            <div class="d-flex justify-content-center">
+                <h1 class="text-center position-relative">Bookmarker</h1>
+
+            </div>
+            <div class="bookmark-form py-4 mt-4">
+                <h2 class=" text-center">
+                    <i class="fa-solid fa-bookmark"></i>
+                    Bookmark your favorite sites
+                    <i class="fa-solid fa-bookmark"></i>
+                </h2>
+                <div>
+                    <label for="inputName" class="fw-bold mb-2"><i class="fa-solid fa-book-bookmark me-1"></i>  Site Name </label>
+                    <input type="text" name="name" id="siteName" class="form-control mb-3" placeholder="Bookmarker Name">
+                    <label for="inputName" class="fw-bold mb-2"><i class="fa-solid fa-link me-1"></i>  Site URL </label>
+                    <input type="text" name="name" id="siteUrl" class="form-control mb-3" placeholder="Bookmarker Name">
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <button type="button" class="btn btn-danger px-5 " id="submitBtn">Submit</button>
+                </div>
+
+            </div>
+            <div
+                class="table-responsive my-4"
+            >
+                <table
+                    class="table table-light"
+                >
+                    <thead class="text-center">
+                        <tr>
+                            <th scope="col">Index</th>
+                            <th scope="col">Website Name</th>
+                            <th scope="col">Visit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center" id="tbody">
+                        
+                        
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="popup bg-white rounded-3 shadow ">
+                <div class="d-flex justify-content-between mt-4 py-5">
+                    <div>
+                        <span class="ms-3 bg-danger"></span>
+                        <span class="bg-success"></span>
+                        <span class="bg-warning"></span>
+                    </div>
+                    
+                </div>
+
+            </div> -->
+            
+        </div>
+    </div>
+    
+    <script src="bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.view{
+    background-color: #f7ecde;
+}
+.view h1{
+    font-size: 50px;
+    font-family: "Pacifico", cursive;
+    color: #352e28;
+    width: fit-content;
+    z-index: 1;
+}
+ h1::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 25%;
+    left: 0;
+    bottom: 5px;
+    background-color: #fec260;
+    transition: all 350ms;
+    z-index: -1;
+}
+.view h1:hover::before {
+    height: 50%;
+}
+
+.bookmark-form {
+    border-width: 2px 0 2px 0;
+    border-style: dotted;
+    border-color: #352e28;
+}
+.bookmark-form h2{
+    font-family: "Righteous", cursive;
+    font-size: 25px;
+    background-image: linear-gradient(to right, #3ca55c, #b8aa15);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+}
+.btn-visit{
+    background-color: #9eb23b;
+    color: #fff;
+}
+.btn-visit:hover{
+    background-color: #8a9e23;
+    color: #fff;
+}
+.btn-visit a{
+    color: #fff;
+    text-decoration: none;
+}
+.popup{
+    width: 35%;
+}
+.popup span{
+    width: 18px;
+    height: 18px;
+    background-color: red;
+    display: inline-block;
+    border-radius: 50%;
+}
