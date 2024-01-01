@@ -77,3 +77,6 @@
     font-size: 1.28rem;
     padding-top: 10px;
 }
+#closeBtn{
+    cursor: pointer;
+}
