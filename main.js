@@ -5,6 +5,7 @@ var submitBtnEl = document.getElementById("submitBtn");
 var visitBtnEl = document.getElementById("visitBtn");
 var deleteBtnEl = document.getElementById("deleteBtn");
 var tbodyEl = document.getElementById("tbody");
+let nameAlert = document.getElementById("nameAlert")
 var container = '';
 var bookMarkList = []
 
@@ -112,5 +113,29 @@ function deleteBookMark (index) {
 }
 
 
+
+
+
+// & Validation Name Function
+function validationName(){
+    let regexName = /^[A-Z][a-z]{3,}/
+    let nameRegex = regexName.test(siteNameEl.value)
+    if(nameRegex==true){
+        nameAlert.classList.add('d-none');
+        siteNameEl.classList.add('is-valid');
+        siteNameEl.classList.remove('is-invalid');
+
+    }else{
+        siteNameEl.classList.add('is-invalid');
+        nameAlert.classList.remove('d-none');
+        siteNameEl.classList.remove('is-valid');
+        
+    }
+    
+
+}
+
+
 // *----------------Events----------------
 submitBtnEl.addEventListener('click',addBookMark)
+siteNameEl.addEventListener('blur',validationName)
