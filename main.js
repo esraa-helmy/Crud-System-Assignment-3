@@ -5,8 +5,10 @@ var submitBtnEl = document.getElementById("submitBtn");
 var visitBtnEl = document.getElementById("visitBtn");
 var deleteBtnEl = document.getElementById("deleteBtn");
 var tbodyEl = document.getElementById("tbody");
-let nameAlert = document.getElementById("nameAlert");
-let urlAlert =document.getElementById("urlAlert")
+let popUpModal =document.getElementById("popUpModal");
+let closeBtn =document.getElementById("closeBtn")
+// let nameAlert = document.getElementById("nameAlert");
+// let urlAlert =document.getElementById("urlAlert")
 var container = '';
 var bookMarkList = []
 
@@ -16,15 +18,23 @@ bookMarkList = JSON.parse(localStorage.getItem("bookmarkData")) || []
 drawBookMarkTable (bookMarkList)
 // & Add bookmark Function
 function addBookMark () {
-    var bookMarkData = {
-        name:siteNameEl.value,
-        url:siteUrlEl.value
+    if (validationName()== true && validationWebSiteUrl()== true) {
+        siteNameEl.classList.remove('is-valid');
+        siteUrlEl.classList.remove('is-valid');
+        var bookMarkData = {
+            name:siteNameEl.value,
+            url:siteUrlEl.value
+        }
+        bookMarkList.push(bookMarkData)
+        console.log(bookMarkList)
+        localStorage.setItem("bookmarkData",JSON.stringify(bookMarkList))
+        clearFormData ()
+        showBookMarkData ()
+    }else{
+        openModal ()
     }
-    bookMarkList.push(bookMarkData)
-    console.log(bookMarkList)
-    localStorage.setItem("bookmarkData",JSON.stringify(bookMarkList))
-    clearFormData ()
-    showBookMarkData ()
+    
+   
 
     
 }
@@ -116,19 +126,19 @@ function deleteBookMark (index) {
 
 // & Validation Name Function
 function validationName(){
-    let regexName = /^[A-Z][a-z]{3,}/
-    let nameRegex = regexName.test(siteUrlEl.value)
+    let regexName = /^[A-Z][a-z]{2,}/
+    let nameRegex = regexName.test(siteNameEl.value)
     if(nameRegex==true){
-        nameAlert.classList.add('d-none');
         siteNameEl.classList.add('is-valid');
         siteNameEl.classList.remove('is-invalid');
 
     }else{
         siteNameEl.classList.add('is-invalid');
-        nameAlert.classList.remove('d-none');
         siteNameEl.classList.remove('is-valid');
     }
+    return nameRegex
 }
+
 
 // & Validation WebSite URL function
 function validationWebSiteUrl(){
@@ -136,15 +146,29 @@ function validationWebSiteUrl(){
     let urlRegex = regexUrl.test(siteUrlEl.value)
     console.log(urlRegex)
     if(urlRegex==true){
-        urlAlert.classList.add('d-none');
+        // urlAlert.classList.add('d-none');
         siteUrlEl.classList.add('is-valid');
         siteUrlEl.classList.remove('is-invalid');
 
     }else{
-        urlAlert.classList.remove('d-none');
+        // urlAlert.classList.remove('d-none');
         siteUrlEl.classList.add('is-invalid');
         siteUrlEl.classList.remove('is-valid');
     }
+    return urlRegex
+}
+
+
+// & close Modal function 
+function openModal () {
+    popUpModal.classList.replace('d-none','d-flex')
+    // popUpModal.classList.add('justify-content-center')
+    // popUpModal.classList.add(' align-items-center')
+    
+}
+function closeModal () {
+    popUpModal.classList.replace('d-flex','d-none')
+    
 }
 
 
@@ -152,3 +176,14 @@ function validationWebSiteUrl(){
 submitBtnEl.addEventListener('click',addBookMark);
 siteNameEl.addEventListener('blur',validationName);
 siteUrlEl.addEventListener('blur',validationWebSiteUrl)
+closeBtn.addEventListener('click',closeModal)
+document.addEventListener("keydown", function (e) {
+    if (e.key == "Escape") {
+      closeModal();
+    }
+  });
+  document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("popup-modal")) {
+      closeModal();
+    }
+  });

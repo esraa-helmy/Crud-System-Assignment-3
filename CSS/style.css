@@ -52,8 +52,15 @@
     color: #fff;
     text-decoration: none;
 }
+.popup-modal{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    /* min-height: 100vh; */
+
+}
 .popup{
-    width: 35%;
+    width: 38%;
+   
 }
 .popup span{
     width: 18px;
@@ -61,4 +68,12 @@
     background-color: red;
     display: inline-block;
     border-radius: 50%;
+}
+.popup p{
+    font-size: 1.3125rem;
+    font-family: 'Bree Serif', serif;
+}
+.rules li {
+    font-size: 1.28rem;
+    padding-top: 10px;
 }
