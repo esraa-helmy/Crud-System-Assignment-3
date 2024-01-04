@@ -6,7 +6,8 @@ var visitBtnEl = document.getElementById("visitBtn");
 var deleteBtnEl = document.getElementById("deleteBtn");
 var tbodyEl = document.getElementById("tbody");
 let popUpModal =document.getElementById("popUpModal");
-let closeBtn =document.getElementById("closeBtn")
+let closeBtn =document.getElementById("closeBtn");
+let searchInputEl = document.getElementById("search")
 // let nameAlert = document.getElementById("nameAlert");
 // let urlAlert =document.getElementById("urlAlert")
 var container = '';
@@ -70,13 +71,13 @@ function showBookMarkData () {
     tbodyEl.innerHTML+=container
     
 }
-function drawBookMarkTable (list) {
+function drawBookMarkTable (list,searchTerm) {
     var container = '';
     
     for (let i = 0; i < list.length; i++) {
         container += `<tr class="">
         <td scope="row">${i+1}</td>
-        <td>${list[i].name}</td>
+        <td>${searchTerm?list[i].name.replace(searchTerm,`<span class="bg-warning">${searchTerm}</span>`):list[i].name}</td>
         
         <td>
             <a class="btn btn-visit" id="visitUrl" href="${list[i].url}" target="_blank" >
@@ -171,11 +172,25 @@ function closeModal () {
     
 }
 
+// & Search Function 
+function search(){
+    let searchList =[]
+    for (let i = 0; i < bookMarkList.length; i++) {
+        if (bookMarkList[i].name.toLowerCase().includes( searchInputEl.value.toLowerCase())  ) {
+            searchList.push(bookMarkList[i])
+            drawBookMarkTable (searchList,searchInputEl.value)
+        } 
+    }
+    
+}
+
 
 // *----------------Events----------------
 submitBtnEl.addEventListener('click',addBookMark);
 siteNameEl.addEventListener('blur',validationName);
 siteUrlEl.addEventListener('blur',validationWebSiteUrl)
+
+// ^------------Close PopUp Modal Events --------------
 closeBtn.addEventListener('click',closeModal)
 document.addEventListener("keydown", function (e) {
     if (e.key == "Escape") {
@@ -187,3 +202,6 @@ document.addEventListener("keydown", function (e) {
       closeModal();
     }
   });
+
+
+  searchInputEl.addEventListener('keyup',search)
